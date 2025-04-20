@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loading {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(#766DF4 0 90deg,#E4E4ED 0 180deg);
+    animation: s1 .5s infinite linear;
+  }
+  
+  @keyframes s1 {
+    100% {transform: rotate(.5turn)}
+  }
