@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 const Cart = () => {
   const { cart, catalog } = useSelector((state) => state.cart);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [totalItem,setTotalItems]=useState(0);
   useEffect(() => {
     if (cart.length > 0)
       setTotalAmount(cart?.reduce((accumalated, curr) => accumalated + curr.qty * curr.price, 0));
+    setTotalItems(cart?.reduce((tot,curr)=>tot+curr.qty,0));
   }, [cart, catalog]) //Whenever we add or remove any item from/to "cart"  
   useEffect(() => {
     console.log("IN CART PAGE--CART-", cart)
@@ -32,7 +34,7 @@ const Cart = () => {
                 <div>
                   <div className="uppercase font-semibold text-[1.5rem]   text-green-500 ">Your Cart</div>
                   <div className="uppercase font-bold  text-[3rem]   text-green-500 ">Summary</div>
-                  <p className="font-semibold text-[1.2rem] text-gray-600 ">Total Items:{cart.length}</p>
+                  <p className="font-semibold text-[1.2rem] text-gray-600 ">Total Items:{totalItem}</p>
                 </div>
                 <div>
                   <p className="font-semibold text-[1.2rem] text-gray-600">Total Amount:
